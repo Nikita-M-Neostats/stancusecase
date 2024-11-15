@@ -1,0 +1,935 @@
+2024-11-15 11:33:31 [INFO] Question: SHOW THE DISTRIBUTION OF COUNTRY WISE PRODUCT
+
+2024-11-15 11:33:31 [INFO] Running PandasAI with langchain_azure-openai-chat LLM...
+2024-11-15 11:33:31 [INFO] Prompt ID: 02f94118-1b69-4ff3-8c43-276489114b12
+2024-11-15 11:33:31 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-11-15 11:33:33 [INFO] Executing Step 0: ValidatePipelineInput
+2024-11-15 11:33:33 [INFO] Executing Step 1: CacheLookup
+2024-11-15 11:33:33 [INFO] Executing Step 2: PromptGeneration
+2024-11-15 11:33:34 [INFO] Using prompt: dfs[0]:
+  name: null
+  description: null
+  type: pd.DataFrame
+  rows: 168553
+  columns: 14
+  schema:
+    fields:
+    - name: account_no
+      type: object
+      samples:
+      - '1424983952'
+      - '8490130495'
+      - '7901811418'
+    - name: gov_non_gov
+      type: object
+      samples:
+      - GOVT
+      - GOVT
+      - NON GOVT
+    - name: product
+      type: object
+      samples:
+      - personal_loan
+      - Education Loan
+      - Affordable Housing
+    - name: sales_person_id2
+      type: object
+      samples:
+      - '6990036534'
+      - '1684820004'
+      - '0005317611'
+    - name: country
+      type: object
+      samples:
+      - country5
+      - country7
+      - country6
+    - name: branch_name
+      type: object
+      samples:
+      - Jinja
+      - Ajah
+      - Shinyanga Branch
+    - name: designation
+      type: object
+      samples:
+      - DSA
+      - DSA
+      - DSA
+    - name: region
+      type: object
+      samples:
+      - Singida
+      - Rukwa
+      - Central
+    - name: team_leader
+      type: object
+      samples:
+      - Camillus Onwu
+      - Nelson Manhica
+      - Fernando Machava
+    - name: branch_manager
+      type: object
+      samples:
+      - Waheed Tunji
+      - Sarah Nanyombi
+      - Arcanjo Mucambe
+    - name: branch_manager_code
+      type: object
+      samples:
+      - '11930'
+      - '20009'
+      - '11542'
+    - name: ageband
+      type: object
+      samples:
+      - 26-30 years
+      - 60+ years
+      - 31-35 years
+    - name: regional_manager
+      type: object
+      samples:
+      - Antonio Virchane
+      - Botsalo Kahiya
+      - Donum Shiimi
+    - name: regional_manager_code
+      type: object
+      samples:
+      - '30004'
+      - '11036'
+      - '30002'
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ SHOW THE DISTRIBUTION OF COUNTRY WISE PRODUCT
+
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-11-15 11:33:34 [INFO] Executing Step 3: CodeGenerator
+2024-11-15 11:33:36 [INFO] HTTP Request: POST https://prudential-openai-service.openai.azure.com//openai/deployments/prudential-gpt4o/chat/completions?api-version=2024-02-15-preview "HTTP/1.1 200 OK"
+2024-11-15 11:33:36 [INFO] Prompt used:
+            
+dfs[0]:
+  name: null
+  description: null
+  type: pd.DataFrame
+  rows: 168553
+  columns: 14
+  schema:
+    fields:
+    - name: account_no
+      type: object
+      samples:
+      - '1424983952'
+      - '8490130495'
+      - '7901811418'
+    - name: gov_non_gov
+      type: object
+      samples:
+      - GOVT
+      - GOVT
+      - NON GOVT
+    - name: product
+      type: object
+      samples:
+      - personal_loan
+      - Education Loan
+      - Affordable Housing
+    - name: sales_person_id2
+      type: object
+      samples:
+      - '6990036534'
+      - '1684820004'
+      - '0005317611'
+    - name: country
+      type: object
+      samples:
+      - country5
+      - country7
+      - country6
+    - name: branch_name
+      type: object
+      samples:
+      - Jinja
+      - Ajah
+      - Shinyanga Branch
+    - name: designation
+      type: object
+      samples:
+      - DSA
+      - DSA
+      - DSA
+    - name: region
+      type: object
+      samples:
+      - Singida
+      - Rukwa
+      - Central
+    - name: team_leader
+      type: object
+      samples:
+      - Camillus Onwu
+      - Nelson Manhica
+      - Fernando Machava
+    - name: branch_manager
+      type: object
+      samples:
+      - Waheed Tunji
+      - Sarah Nanyombi
+      - Arcanjo Mucambe
+    - name: branch_manager_code
+      type: object
+      samples:
+      - '11930'
+      - '20009'
+      - '11542'
+    - name: ageband
+      type: object
+      samples:
+      - 26-30 years
+      - 60+ years
+      - 31-35 years
+    - name: regional_manager
+      type: object
+      samples:
+      - Antonio Virchane
+      - Botsalo Kahiya
+      - Donum Shiimi
+    - name: regional_manager_code
+      type: object
+      samples:
+      - '30004'
+      - '11036'
+      - '30002'
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ SHOW THE DISTRIBUTION OF COUNTRY WISE PRODUCT
+
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2024-11-15 11:33:36 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+df = dfs[0]
+
+# Group by country and product, then count the occurrences
+country_product_distribution = df.groupby(['country', 'product']).size().unstack(fill_value=0)
+
+# Plotting the distribution
+plt.figure(figsize=(12, 8))
+country_product_distribution.plot(kind='bar', stacked=True)
+plt.title('Distribution of Country Wise Product')
+plt.xlabel('Country')
+plt.ylabel('Number of Products')
+plt.legend(title='Product')
+plt.xticks(rotation=45)
+plt.tight_layout()
+
+# Save the plot as a png file
+plot_filename = 'country_product_distribution.png'
+plt.savefig(plot_filename)
+
+# Declare result var
+result = { "type": "plot", "value": plot_filename }
+            ```
+            
+2024-11-15 11:33:36 [INFO] Executing Step 4: CachePopulation
+2024-11-15 11:33:36 [INFO] Executing Step 5: CodeExecution
+2024-11-15 11:33:36 [INFO] Saving charts to C:\Users\Nikita.Mate\POC\StanC\StandardC\exports\charts\temp_chart.png
+2024-11-15 11:33:36 [INFO] 
+Code running:
+```
+df = dfs[0]
+country_product_distribution = df.groupby(['country', 'product']).size().unstack(fill_value=0)
+plt.figure(figsize=(12, 8))
+country_product_distribution.plot(kind='bar', stacked=True)
+plt.title('Distribution of Country Wise Product')
+plt.xlabel('Country')
+plt.ylabel('Number of Products')
+plt.legend(title='Product')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plot_filename = 'C:/Users/Nikita.Mate/POC/StanC/StandardC/exports/charts/temp_chart.png'
+plt.savefig(plot_filename)
+result = {'type': 'plot', 'value': plot_filename}
+        ```
+2024-11-15 11:33:39 [INFO] Executing Step 6: ResultValidation
+2024-11-15 11:33:39 [INFO] Answer: {'type': 'plot', 'value': 'C:/Users/Nikita.Mate/POC/StanC/StandardC/exports/charts/temp_chart.png'}
+2024-11-15 11:33:39 [INFO] Executing Step 7: ResultParsing
+2024-11-15 11:34:38 [INFO] Question: SHOW THE DISTRIBUTION OF COUNTRY WISE PRODUCT
+
+2024-11-15 11:34:38 [INFO] Running PandasAI with langchain_azure-openai-chat LLM...
+2024-11-15 11:34:38 [INFO] Prompt ID: 3f51e51d-62e4-4170-9e6c-dcd0515c5354
+2024-11-15 11:34:38 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-11-15 11:34:39 [INFO] Executing Step 0: ValidatePipelineInput
+2024-11-15 11:34:39 [INFO] Executing Step 1: CacheLookup
+2024-11-15 11:34:39 [INFO] Using cached response
+2024-11-15 11:34:39 [INFO] Executing Step 2: PromptGeneration
+2024-11-15 11:34:39 [INFO] Executing Step 2: Skipping...
+2024-11-15 11:34:39 [INFO] Executing Step 3: CodeGenerator
+2024-11-15 11:34:39 [INFO] Executing Step 3: Skipping...
+2024-11-15 11:34:39 [INFO] Executing Step 4: CachePopulation
+2024-11-15 11:34:39 [INFO] Executing Step 4: Skipping...
+2024-11-15 11:34:39 [INFO] Executing Step 5: CodeExecution
+2024-11-15 11:34:39 [INFO] Saving charts to C:\Users\Nikita.Mate\POC\StanC\StandardC\exports\charts\temp_chart.png
+2024-11-15 11:34:39 [INFO] 
+Code running:
+```
+df = dfs[0]
+country_product_distribution = df.groupby(['country', 'product']).size().unstack(fill_value=0)
+plt.figure(figsize=(12, 8))
+country_product_distribution.plot(kind='bar', stacked=True)
+plt.title('Distribution of Country Wise Product')
+plt.xlabel('Country')
+plt.ylabel('Number of Products')
+plt.legend(title='Product')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plot_filename = 'C:/Users/Nikita.Mate/POC/StanC/StandardC/exports/charts/temp_chart.png'
+plt.savefig(plot_filename)
+result = {'type': 'plot', 'value': plot_filename}
+        ```
+2024-11-15 11:34:40 [INFO] Executing Step 6: ResultValidation
+2024-11-15 11:34:40 [INFO] Answer: {'type': 'plot', 'value': 'C:/Users/Nikita.Mate/POC/StanC/StandardC/exports/charts/temp_chart.png'}
+2024-11-15 11:34:40 [INFO] Executing Step 7: ResultParsing
+2024-11-15 12:00:40 [INFO] Question: what is the count of government type 
+
+2024-11-15 12:00:40 [INFO] Running PandasAI with langchain_azure-openai-chat LLM...
+2024-11-15 12:00:40 [INFO] Prompt ID: 2e5abcc5-25a4-400e-80e1-6da459b7ab2d
+2024-11-15 12:00:40 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-11-15 12:00:40 [INFO] Executing Step 0: ValidatePipelineInput
+2024-11-15 12:00:40 [INFO] Executing Step 1: CacheLookup
+2024-11-15 12:00:40 [INFO] Executing Step 2: PromptGeneration
+2024-11-15 12:00:40 [INFO] Using prompt: dfs[0]:
+  name: null
+  description: null
+  type: pd.DataFrame
+  rows: 168553
+  columns: 14
+  schema:
+    fields:
+    - name: account_no
+      type: object
+      samples:
+      - '6614481621'
+      - 0108837748
+      - '6737285853'
+    - name: gov_non_gov
+      type: object
+      samples:
+      - NON GOVT
+      - GOVT
+      - NON GOVT
+    - name: product
+      type: object
+      samples:
+      - Individual Loan
+      - Education Loan
+      - Agricultural Loan
+    - name: sales_person_id2
+      type: object
+      samples:
+      - '1757236717'
+      - '2894426298'
+      - '4829646331'
+    - name: country
+      type: object
+      samples:
+      - country9
+      - country1
+      - country5
+    - name: branch_name
+      type: object
+      samples:
+      - Arua-2
+      - Lobatse
+      - ''
+    - name: designation
+      type: object
+      samples:
+      - DSA
+      - DSA
+      - DSA
+    - name: region
+      type: object
+      samples:
+      - South
+      - ''
+      - Arusha
+    - name: team_leader
+      type: object
+      samples:
+      - Cecilia Maguel
+      - Raymond Sabas Sinduhija
+      - Benedictor Christopher
+    - name: branch_manager
+      type: object
+      samples:
+      - Ronnah Owembabazi
+      - Joyce Kiruri
+      - Gorata  S Khwarae
+    - name: branch_manager_code
+      type: object
+      samples:
+      - '1920707826'
+      - '1877719688'
+      - '2155077264'
+    - name: ageband
+      type: object
+      samples:
+      - 26-30 years
+      - 20 < Years
+      - 20-25 years
+    - name: regional_manager
+      type: object
+      samples:
+      - ''
+      - Eric Ndunga
+      - USWEGE MWAIPYANA
+    - name: regional_manager_code
+      type: object
+      samples:
+      - '30001'
+      - '8010238218'
+      - '20006'
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ what is the count of government type 
+
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-11-15 12:00:40 [INFO] Executing Step 3: CodeGenerator
+2024-11-15 12:00:43 [INFO] HTTP Request: POST https://prudential-openai-service.openai.azure.com//openai/deployments/prudential-gpt4o/chat/completions?api-version=2024-02-15-preview "HTTP/1.1 200 OK"
+2024-11-15 12:00:43 [INFO] Prompt used:
+            
+dfs[0]:
+  name: null
+  description: null
+  type: pd.DataFrame
+  rows: 168553
+  columns: 14
+  schema:
+    fields:
+    - name: account_no
+      type: object
+      samples:
+      - '6614481621'
+      - 0108837748
+      - '6737285853'
+    - name: gov_non_gov
+      type: object
+      samples:
+      - NON GOVT
+      - GOVT
+      - NON GOVT
+    - name: product
+      type: object
+      samples:
+      - Individual Loan
+      - Education Loan
+      - Agricultural Loan
+    - name: sales_person_id2
+      type: object
+      samples:
+      - '1757236717'
+      - '2894426298'
+      - '4829646331'
+    - name: country
+      type: object
+      samples:
+      - country9
+      - country1
+      - country5
+    - name: branch_name
+      type: object
+      samples:
+      - Arua-2
+      - Lobatse
+      - ''
+    - name: designation
+      type: object
+      samples:
+      - DSA
+      - DSA
+      - DSA
+    - name: region
+      type: object
+      samples:
+      - South
+      - ''
+      - Arusha
+    - name: team_leader
+      type: object
+      samples:
+      - Cecilia Maguel
+      - Raymond Sabas Sinduhija
+      - Benedictor Christopher
+    - name: branch_manager
+      type: object
+      samples:
+      - Ronnah Owembabazi
+      - Joyce Kiruri
+      - Gorata  S Khwarae
+    - name: branch_manager_code
+      type: object
+      samples:
+      - '1920707826'
+      - '1877719688'
+      - '2155077264'
+    - name: ageband
+      type: object
+      samples:
+      - 26-30 years
+      - 20 < Years
+      - 20-25 years
+    - name: regional_manager
+      type: object
+      samples:
+      - ''
+      - Eric Ndunga
+      - USWEGE MWAIPYANA
+    - name: regional_manager_code
+      type: object
+      samples:
+      - '30001'
+      - '8010238218'
+      - '20006'
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ what is the count of government type 
+
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2024-11-15 12:00:43 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+
+# Assuming dfs is already declared and contains the DataFrame
+df = dfs[0]
+
+# Count the number of government type entries
+gov_count = df[df['gov_non_gov'] == 'GOVT'].shape[0]
+
+# Declare result var
+result = { "type": "number", "value": gov_count }
+
+# Print the result for verification
+print(result)
+            ```
+            
+2024-11-15 12:00:43 [INFO] Executing Step 4: CachePopulation
+2024-11-15 12:00:43 [INFO] Executing Step 5: CodeExecution
+2024-11-15 12:00:43 [INFO] 
+Code running:
+```
+df = dfs[0]
+gov_count = df[df['gov_non_gov'] == 'GOVT'].shape[0]
+result = {'type': 'number', 'value': gov_count}
+print(result)
+        ```
+2024-11-15 12:00:43 [INFO] Executing Step 6: ResultValidation
+2024-11-15 12:00:43 [INFO] Answer: {'type': 'number', 'value': 155094}
+2024-11-15 12:00:43 [INFO] Executing Step 7: ResultParsing
+2024-11-15 12:01:11 [INFO] Question: list down all the available products
+
+
+2024-11-15 12:01:11 [INFO] Running PandasAI with langchain_azure-openai-chat LLM...
+2024-11-15 12:01:11 [INFO] Prompt ID: fcd310d9-55c4-47d0-b750-db16b2ee7d01
+2024-11-15 12:01:11 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-11-15 12:01:12 [INFO] Executing Step 0: ValidatePipelineInput
+2024-11-15 12:01:12 [INFO] Executing Step 1: CacheLookup
+2024-11-15 12:01:12 [INFO] Executing Step 2: PromptGeneration
+2024-11-15 12:01:12 [INFO] Using prompt: dfs[0]:
+  name: null
+  description: null
+  type: pd.DataFrame
+  rows: 168553
+  columns: 14
+  schema:
+    fields:
+    - name: account_no
+      type: object
+      samples:
+      - '9764943049'
+      - '0602662615'
+      - '9115435481'
+    - name: gov_non_gov
+      type: object
+      samples:
+      - GOVT
+      - NON GOVT
+      - NON GOVT
+    - name: product
+      type: object
+      samples:
+      - Affordable Housing
+      - Individual Loan
+      - General MSE
+    - name: sales_person_id2
+      type: object
+      samples:
+      - '3648352770'
+      - '1697556951'
+      - '7789639914'
+    - name: country
+      type: object
+      samples:
+      - country1
+      - country4
+      - country5
+    - name: branch_name
+      type: object
+      samples:
+      - Jinja
+      - Luweero
+      - Mbarara-1
+    - name: designation
+      type: object
+      samples:
+      - DSA
+      - DSA
+      - DSA
+    - name: region
+      type: object
+      samples:
+      - Eastern
+      - Lindi
+      - Dodoma
+    - name: team_leader
+      type: object
+      samples:
+      - Kabagenyi Samalie
+      - Cardoso Assamo
+      - ALBERT A RAPHAEL
+    - name: branch_manager
+      type: object
+      samples:
+      - Ernest Zirembuzi
+      - Mmoloki Nteke
+      - Joseph Tshegofatso
+    - name: branch_manager_code
+      type: object
+      samples:
+      - '4054737866'
+      - '1257899774'
+      - '9444634732'
+    - name: ageband
+      type: object
+      samples:
+      - 60+ years
+      - 31-35 years
+      - 36-45 years
+    - name: regional_manager
+      type: object
+      samples:
+      - Antonio Virchane
+      - Donum Shiimi
+      - HAPPY JOSEPH
+    - name: regional_manager_code
+      type: object
+      samples:
+      - '30004'
+      - '20003'
+      - '259'
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ list down all the available products
+
+
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-11-15 12:01:12 [INFO] Executing Step 3: CodeGenerator
+2024-11-15 12:01:16 [INFO] HTTP Request: POST https://prudential-openai-service.openai.azure.com//openai/deployments/prudential-gpt4o/chat/completions?api-version=2024-02-15-preview "HTTP/1.1 200 OK"
+2024-11-15 12:01:16 [INFO] Prompt used:
+            
+dfs[0]:
+  name: null
+  description: null
+  type: pd.DataFrame
+  rows: 168553
+  columns: 14
+  schema:
+    fields:
+    - name: account_no
+      type: object
+      samples:
+      - '9764943049'
+      - '0602662615'
+      - '9115435481'
+    - name: gov_non_gov
+      type: object
+      samples:
+      - GOVT
+      - NON GOVT
+      - NON GOVT
+    - name: product
+      type: object
+      samples:
+      - Affordable Housing
+      - Individual Loan
+      - General MSE
+    - name: sales_person_id2
+      type: object
+      samples:
+      - '3648352770'
+      - '1697556951'
+      - '7789639914'
+    - name: country
+      type: object
+      samples:
+      - country1
+      - country4
+      - country5
+    - name: branch_name
+      type: object
+      samples:
+      - Jinja
+      - Luweero
+      - Mbarara-1
+    - name: designation
+      type: object
+      samples:
+      - DSA
+      - DSA
+      - DSA
+    - name: region
+      type: object
+      samples:
+      - Eastern
+      - Lindi
+      - Dodoma
+    - name: team_leader
+      type: object
+      samples:
+      - Kabagenyi Samalie
+      - Cardoso Assamo
+      - ALBERT A RAPHAEL
+    - name: branch_manager
+      type: object
+      samples:
+      - Ernest Zirembuzi
+      - Mmoloki Nteke
+      - Joseph Tshegofatso
+    - name: branch_manager_code
+      type: object
+      samples:
+      - '4054737866'
+      - '1257899774'
+      - '9444634732'
+    - name: ageband
+      type: object
+      samples:
+      - 60+ years
+      - 31-35 years
+      - 36-45 years
+    - name: regional_manager
+      type: object
+      samples:
+      - Antonio Virchane
+      - Donum Shiimi
+      - HAPPY JOSEPH
+    - name: regional_manager_code
+      type: object
+      samples:
+      - '30004'
+      - '20003'
+      - '259'
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ list down all the available products
+
+
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2024-11-15 12:01:16 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+# Assuming dfs is already declared and contains the DataFrame
+
+# Extract the unique products
+unique_products = dfs[0]['product'].unique()
+
+# Declare result var: 
+# type (possible values "string", "number", "dataframe", "plot"). 
+# Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } 
+# or { "type": "number", "value": 125 } 
+# or { "type": "dataframe", "value": pd.DataFrame({...}) } 
+# or { "type": "plot", "value": "temp_chart.png" }
+
+result = { "type": "dataframe", "value": pd.DataFrame(unique_products, columns=['product']) }
+            ```
+            
+2024-11-15 12:01:16 [INFO] Executing Step 4: CachePopulation
+2024-11-15 12:01:16 [INFO] Executing Step 5: CodeExecution
+2024-11-15 12:01:16 [INFO] Saving charts to C:\Users\Nikita.Mate\POC\StanC\StandardC\exports\charts\temp_chart.png
+2024-11-15 12:01:16 [INFO] 
+Code running:
+```
+unique_products = dfs[0]['product'].unique()
+result = {'type': 'dataframe', 'value': pd.DataFrame(unique_products, columns=['product'])}
+        ```
+2024-11-15 12:01:16 [INFO] Executing Step 6: ResultValidation
+2024-11-15 12:01:16 [INFO] Answer: {'type': 'dataframe', 'value':               product
+0         General MSE
+1      Education Loan
+2         Health Loan
+3             Non Das
+4  Affordable Housing
+5   Agricultural Loan
+6     Individual Loan
+7       personal_loan}
+2024-11-15 12:01:16 [INFO] Executing Step 7: ResultParsing
