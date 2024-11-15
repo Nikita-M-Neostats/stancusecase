@@ -62,6 +62,7 @@ def get_table_info(table_name):
         st.write(df)
         return df
     except psycopg2.Error as e:
+        st.error("Error executing query:"+str(e))
         return "Error executing query:"+str(e)
 
 def get_table_names():
@@ -86,6 +87,7 @@ def get_table_names():
         conn.close()
         return table_names
     except psycopg2.Error as e:
+        st.error("Error executing query:"+str(e))
         return "Error executing query:"+str(e)
 def openai_model(question):
     start_time = time.time()
@@ -138,6 +140,7 @@ def execute_query(query):
             st.write("Query Executed Successfully")
             return "Query Executed Successfully"
     except psycopg2.Error as e:
+        st.error("Error executing query:"+str(e))
         print("Error executing query: " + str(e))
 
 def main():
