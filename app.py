@@ -3,7 +3,6 @@
 from pandasai import SmartDatalake
 import streamlit as st
 import pandas as pd
-import psycopg2
 from langchain import LLMChain
 from langchain_core.prompts import PromptTemplate
 from langchain_openai import AzureChatOpenAI
