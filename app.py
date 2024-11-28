@@ -11,6 +11,7 @@ import warnings
 warnings.filterwarnings("ignore")
 import regex as re
 import time
+import pyodbc
 from streamlit.web.server import Server
 from pandasai import SmartDatalake
 import os
@@ -24,10 +25,12 @@ api_version=st.secrets.api_version
 model=st.secrets.model
 api_key=st.secrets.api_key
 azure_endpoint=st.secrets.azure_endpoint       
-host=st.secrets.host
-user=st.secrets.user
-password=st.secrets.password
-port=st.secrets.port
+server = st.secrets.server  # Azure SQL server name
+database = st.secrets.database  # Database name
+username = st.secrets.username  # Azure SQL username
+password = st.secrets.password  # Azure SQL password
+driver = '{ODBC Driver 17 for SQL Server}'  # Driver for Azure SQL
+connectionstring = f"Driver={driver};Server=tcp:genailabssqlserver.database.windows.net,1433;Database=talk2data;Uid=genailabsqluser;Pwd={password};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;"
 
 llm = AzureChatOpenAI(
     api_version=api_version,
@@ -46,49 +49,22 @@ def get_session_state(**kwargs):
             setattr(session, key, val)
     return session
 
-def get_table_info(table_name):
+def get_table_info():
     try:
-        conn = psycopg2.connect(
-            host=host,
-            user=user,
-            password=password,
-            port=port
-        )
+        # Connect to the database
+        conn = pyodbc.connect(connectionstring)
         cursor = conn.cursor()
-        cursor.execute(f"SELECT * FROM {table_name} LIMIT 5;")
-        records = cursor.fetchall()
-        columns = [desc[0] for desc in cursor.description]  
-        df = pd.DataFrame(records, columns=columns)
-        st.write(df)
-        return df
-    except psycopg2.Error as e:
-        st.error("Error executing query:"+str(e))
-        return "Error executing query:"+str(e)
 
-def get_table_names():
-    query = """
-    SELECT tablename 
-    FROM pg_catalog.pg_tables 
-    WHERE schemaname != 'pg_catalog' 
-    AND schemaname != 'information_schema';
-    """
-    try:
-        conn = psycopg2.connect(
-            host=host,
-            user=user,
-            password=password,
-            port=port
-        )
-        cursor = conn.cursor()
-        cursor.execute(query)
-        tables = cursor.fetchall()
-        table_names = [record[0] for record in tables]
-        cursor.close()
-        conn.close()
-        return table_names
-    except psycopg2.Error as e:
-        st.error("Error executing query:"+str(e))
-        return "Error executing query:"+str(e)
+        cursor.execute(f"SELECT TOP 5 * FROM Customer_Data")
+        records = cursor.fetchall()
+        columns = [column[0] for column in cursor.description]  # Get column names
+        df = pd.DataFrame.from_records(records, columns=columns)
+        st.dataframe(df.style.hide(axis="index"))
+        return df
+
+    except Exception as e:
+        return "Error executing query: " + str(e)
+
 def openai_model(question):
     start_time = time.time()
     template = '''
@@ -117,19 +93,14 @@ def openai_model(question):
 
 def execute_query(query):
     try:
-        conn = psycopg2.connect(
-            host=host,
-            user=user,
-            password=password,
-            port=port
-        )
+        conn = pyodbc.connect(connectionstring)
         cursor = conn.cursor()
         cursor.execute(query)
         if 'SELECT' in query.strip().upper():
             records = cursor.fetchall()
-            columns = [desc[0] for desc in cursor.description]  
-            df = pd.DataFrame(records, columns=columns)
-            st.write(df)
+            columns = [desc[0] for desc in cursor.description]
+            df = pd.DataFrame.from_records(records, columns=columns)
+            st.dataframe(df)
             cursor.close()
             conn.close()
             return df
@@ -139,8 +110,7 @@ def execute_query(query):
             conn.close()
             st.write("Query Executed Successfully")
             return "Query Executed Successfully"
-    except psycopg2.Error as e:
-        st.error("Error executing query:"+str(e))
+    except Exception as e:
         print("Error executing query: " + str(e))
 
 def main():
@@ -158,12 +128,13 @@ def main():
         col1, col2= st.columns([0.3, 0.7])
         with col1:
             with st.container(border=True,height=300):
-                table_names = get_table_names()
-                selected_table = st.radio('Select the table', table_names)
+                selected_table="Customer_Data"
+                st.write("Table Name: Customer_Data")
         with col2:
             with st.container(border=True,height=300):
-                st.subheader(f'Sample Records of {selected_table}')
-                get_table_info(selected_table)
+                st.subheader(f'Sample Records of Customer_Data')
+                s=get_table_info()
+                print(s)
 
         col1, col2= st.columns([0.3, 0.7])
         with col1:
@@ -199,15 +170,16 @@ def main():
                                                         st.image(res, use_column_width=True)
                                                 else:
                                                     with st.container(border=True, height=300):
-                                                        st.text(res)
+                                                        st.write(res)
                                             elif isinstance(res, pd.DataFrame):
                                                 with st.container(border=True, height=600):
-                                                    st.write(res)
+                                                    st.dataframe(res)
                                         else:
                                             with st.container(border=True, height=300):
                                                 st.text("No response available.")
                                     except Exception as e:
                                         print("error:", str(e))
             
+
 if __name__ == '__main__':
     main()
