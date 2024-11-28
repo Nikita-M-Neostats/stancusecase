@@ -60,9 +60,8 @@ def get_table_info():
         df = pd.DataFrame.from_records(records, columns=columns)
         st.dataframe(df.style.hide(axis="index"))
         return df
-
     except Exception as e:
-        return "Error executing query: " + str(e)
+        st.error("Error executing query: " + str(e))
 
 def openai_model(question):
     start_time = time.time()
